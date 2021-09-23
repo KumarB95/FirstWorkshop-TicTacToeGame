@@ -19,7 +19,9 @@ public class TicTacToeGame {
         //choosing letter and determining player and computer letter
         choosingLetter();
         //Displaying board to player
-        showBoard();
+        currentBoard();
+        //Take User Input
+        userMove();
     }
 
     //Created board for game
@@ -56,5 +58,24 @@ public class TicTacToeGame {
         System.out.println("---------------");
         System.out.println("| "+board[7]+" | "+board[8]+" | "+board[9]+" |");
         System.out.println("---------------");
+    }
+    private static void userMove(){
+        System.out.println("Enter your move 1-9 : ");
+        Scanner sc =new Scanner(System.in);
+        int userInput=sc.nextInt();
+        if (board[userInput]!='X' && board[userInput]!='O'){
+            board[userInput]=userMark;
+        }
+        else{
+            System.out.println("Position already Taken ! please choose another position ");
+        }
+    }
+    private static void currentBoard(){
+        for (int i=1;i<10;i++) {
+            if (board[i] !='X'&&board[i] !='O') {
+                board[i]=(char) (i+'0');
+            }
+        }
+        showBoard();
     }
 }
