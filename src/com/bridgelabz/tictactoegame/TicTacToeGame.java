@@ -1,5 +1,6 @@
 package com.bridgelabz.tictactoegame;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Scanner;
 public class TicTacToeGame {
     static char[] board = new char[10];
     static char userMark, computerMark;
+    public int a;
 
     public static void main(String[] args) {
         System.out.println("Welcome to Tic Tac Toe Program !");
@@ -21,9 +23,7 @@ public class TicTacToeGame {
         //Displaying board to player
         currentBoard();
         //Take User Input
-        userMove();
-        //Display board to user to check available positions
-        currentBoard();
+        toss();
     }
 
     //Created board for game
@@ -79,5 +79,17 @@ public class TicTacToeGame {
             }
         }
         showBoard();
+    }
+    private static void toss(){
+        Random rand=new Random();
+        int a= rand.nextInt(2);
+        if (a==0){
+            System.out.println("User Won Toss ! Play your First Move");
+            userMove();
+            currentBoard();
+        }
+        else {
+            System.out.println("Computer Won Toss ! Will play First Move");
+        }
     }
 }
