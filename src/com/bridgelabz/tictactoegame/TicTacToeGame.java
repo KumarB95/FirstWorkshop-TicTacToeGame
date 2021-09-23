@@ -22,6 +22,8 @@ public class TicTacToeGame {
         currentBoard();
         //Take User Input
         userMove();
+        //Display board to user to check available positions
+        currentBoard();
     }
 
     //Created board for game
