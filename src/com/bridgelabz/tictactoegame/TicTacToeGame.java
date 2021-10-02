@@ -74,6 +74,19 @@ public class TicTacToeGame {
                 }
             }
         }
+        //To initiate the game again
+        gameAgain();
+    }
+
+    private static void gameAgain() {
+        System.out.println("\nWanna play again. 1) Restart 2) Exit");
+        int option=Utility.getUserInteger();
+        if (option==1) {
+            String[] args = { };
+            main(args);
+        } else {
+            System.exit(1);
+        }
     }
 
     private static int computerCenterSide() {
