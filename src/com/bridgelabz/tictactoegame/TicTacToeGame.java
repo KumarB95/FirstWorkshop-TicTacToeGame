@@ -26,48 +26,51 @@ public class TicTacToeGame {
         outerloop:
         while(flag==0) {
             if((turn+1)%2==0) {
+                //to check whether game is tie or not
+                flag=checkTie();
+                if (flag!=0) {
+                    System.out.println("Nice Play! It's Tie");;
+                    break outerloop;
+                }
                 //for display the current board
                 currentBoard();
                 //for calling the user for number
                 userCall();
                 //for making the mark on user number
                 userMove();
-                //After user making move showing the board
-                currentBoard();
                 //to check whether user is winner or not
                 flag=checkWin();
-                if (flag==1) {
+                if (flag!=0) {
                     System.out.println("Excellent! You are the winner");
                     break outerloop;
                 }
+                turn++;
+            } else {
                 //to check whether game is tie or not
                 flag=checkTie();
-                if (flag==1) {
+                if (flag!=0) {
                     System.out.println("Nice Play! It's Tie");;
                     break outerloop;
                 }
-                turn++;
-            }else {
                 //To check whether computer is winning or not
                 flag=computerWin();
-                if (flag==1) break outerloop;
-                flag=computerBlock();
                 if (flag==1) {
-                    turn++;
-                    flag = 0;
-                    return;
+                    break outerloop;
                 }
-                flag=computerCorner();
-                if (flag==1) {
-                    turn++;
-                    flag=0;
-                    return;
-                }
-                flag=computerCenterSide();
-                if (flag==1) {
-                    turn++;
-                    flag=0;
-                    return;
+                //Choosing to block user else opting for number
+                for (int i=1; i<=3; i++) {
+                    switch (i) {
+                        case 1: flag=computerBlock();
+                            break;
+                        case 2: flag=computerCorner();
+                            break;
+                        default: flag=computerCenterSide();
+                    }
+                    if (flag==1) {
+                        turn++;
+                        flag=0;
+                        break;
+                    }
                 }
             }
         }
