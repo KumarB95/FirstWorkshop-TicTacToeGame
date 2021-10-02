@@ -12,7 +12,6 @@ import java.util.Scanner;
 public class TicTacToeGame {
     static char[] board = new char[10];
     static char userMark, computerMark;
-    public int a;
     static int turn = 1, flag = 0;
 
     public static void main(String[] args) {
@@ -52,6 +51,13 @@ public class TicTacToeGame {
                 //To check whether computer is winning or not
                 flag=computerWin();
                 if (flag==1) break outerloop;
+                flag=computerBlock();
+                if (flag==1) {
+                    turn++;
+                    flag = 0;
+                    return;
+                }
+
             }
         }
     }
@@ -197,4 +203,14 @@ public class TicTacToeGame {
         }
         return flag;
     }
+       //making User block from winning
+        private static int computerBlock() {
+            int index=winBlock(userMark,computerMark);
+            if (index!=0) {
+                board[index]=computerMark;
+                System.out.println("Computer goes for '"+index+"' to block User");
+                flag=1;
+            }
+            return flag;
+        }
 }
